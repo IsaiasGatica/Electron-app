@@ -1,35 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
-    />
+    /> -->
     <link rel="stylesheet" href="style.css" />
+    <link href="bootstrap.min.css" rel="stylesheet" media="all" />
 
-    <title>Hello World!</title>
+    <title>Instrumento Thomson</title>
   </head>
   <body>
-    <h1>Instrumento electron</h1>
-
-    <button>Test</button>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="row d-flex align-items-center justify-content-start">
+          <div class="col-auto">
+            <a class="navbar-brand" href="#">
+              <img
+                src="image/serial.png"
+                alt="Bootstrap"
+                width="50"
+                height="29"
+              />
+            </a>
+          </div>
+          <div class="col-auto">
+            <select class="form-select form-select-sm" id="portSelect"></select>
+          </div>
+          <div class="col-auto">
+            <select class="form-select form-select-sm" id="portbaudrate">
+              <option value="1">115200</option>
+              <option value="2">9600</option>
+            </select>
+          </div>
+          <div class="col-auto">
+            <button
+              id="buttonConnectPort"
+              type="button"
+              class="btn btn-outline-light btn-sm"
+              onclick="bttserialconnect()"
+            >
+              Conectar
+            </button>
+          </div>
+          <div class="col-auto">
+            <button
+              type="button"
+              class="btn btn-outline-light btn-sm"
+              onclick="Puertosdisponibles()"
+            >
+              Refrescar
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
     <br />
-    <label>Serial:</label>
-    <div id="data"></div>
 
-    <div>
-      <canvas id="myChart"></canvas>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-12">
+          <h3 hidden>Grafico</h3>
+          <button
+            id="graphButton"
+            type="button"
+            class="btn btn-outline-light btn-sm"
+            onclick="serialgraph()"
+          >
+            Graficar
+          </button>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
     </div>
-    <script src="js/chart.umd.js"></script>
   </body>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/chart.umd.js"></script>
+  <script src="js/datagraph.js"></script>
+  <script src="js/serialPort.js"></script>
   <script src="js/renderer.js"></script>
-
-  <!-- <div id="chartdiv"></div> -->
-  <!-- </body> -->
-  <!-- <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="pruebaamchart.js"></script> -->
 </html>
