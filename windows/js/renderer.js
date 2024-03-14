@@ -4,12 +4,9 @@ let baudratePort;
 async function Puertosdisponibles() {
   const availablePorts = await getAvailablePorts();
   console.log("Puertos disponibles:", availablePorts);
-  // const firstPortLabel = document.getElementById("Puertodisponible");
   const portSelect = document.getElementById("portSelect");
   portSelect.innerHTML = "";
   selectedPort = availablePorts.length > 0 ? availablePorts[0].path : null;
-
-  const firstPort = availablePorts[0];
 
   availablePorts.forEach((port) => {
     const option = document.createElement("option");
